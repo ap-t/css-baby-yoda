@@ -1,0 +1,289 @@
+:root {
+  --size: 100;
+  --unit: calc((var(--size) / 100) * 1vmin);
+  --background: #e3ddc4;
+  --skin-color: #b2da93;
+  --ear-inner-color: #f4a593;
+  --eye-color: black;
+  --glare-color: white;
+  --cloth-color: #a9a882;
+  --cloth-outline-color: #8c9170;
+}
+
+@font-face {
+  font-family: "Mandalore";
+  src: url("fonts/mandolore/mandalore.ttf");
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Mandalore", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background-color: var(--background);
+}
+
+.baby-yoda {
+  height: calc(80 * var(--unit));
+  width: calc(80 * var(--unit));
+  position: relative;
+}
+
+.baby-yoda *,
+.baby-yoda *::after,
+.baby-yoda *::before {
+  position: absolute;
+}
+
+.baby-yoda .face {
+  width: 40%;
+  height: 27%;
+  margin: auto;
+  top: 20%;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+  background-color: var(--skin-color);
+}
+
+.face .eye {
+  width: 25%;
+  height: 31%;
+  border-radius: 50%;
+  background-color: var(--eye-color);
+  z-index: 100;
+}
+
+.face .eye.left {
+  top: 47%;
+  left: 16%;
+}
+
+.face .eye.right {
+  top: 43%;
+  right: 13%;
+}
+
+.face .eye::before,
+.face .eye::after {
+  content: "";
+  border-radius: 50%;
+  background-color: var(--glare-color);
+}
+
+.face .eye::before {
+  width: 18%;
+  height: 20%;
+  top: 30%;
+  left: 15%;
+}
+
+.face .eye::after {
+  content: "";
+  width: 8%;
+  height: 9%;
+  top: 45%;
+  left: 35%;
+}
+
+.baby-yoda .ear {
+  background-color: var(--skin-color);
+}
+
+.baby-yoda .ear.left {
+  top: 27%;
+  left: 2%;
+  width: 56%;
+  height: 15%;
+  transform: rotate(-10deg);
+  border-radius: 0 50% 0 50% / 0 100% 0 100%;
+}
+
+.baby-yoda .ear.right {
+  top: 25%;
+  left: 42%;
+  width: 56%;
+  height: 15%;
+  transform: rotate(10deg);
+  border-radius: 50% 0 50% 0 / 100% 0 100% 0;
+}
+
+.baby-yoda .ear::after {
+  content: "";
+  width: 46%;
+  height: 70%;
+  background: var(--ear-inner-color);
+  top: 10%;
+}
+
+.baby-yoda .ear.left::after {
+  left: 4%;
+  border-radius: 0 33% 0 80% / 0 100% 0 100%;
+}
+
+.baby-yoda .ear.right::after {
+  right: 4%;
+  border-radius: 33% 0 80% 0/ 100% 0 100% 0;
+}
+
+.baby-yoda .baby-yoda-body {
+  width: 51%;
+  height: 41%;
+  top: 41%;
+  left: 25%;
+}
+
+.baby-yoda-body .robe {
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.robe .collar {
+  background-color: var(--cloth-color);
+  z-index: 200;
+}
+
+.robe .collar.lg {
+  width: 51%;
+  height: 28%;
+  top: 2%;
+  left: 34%;
+  border-radius: 33% 13% 85% 15% / 43% 7% 52% 8%;
+  box-shadow: calc(-0.6 * var(--unit)) calc(0.6 * var(--unit)) 0
+    calc(0.6 * var(--unit)) var(--cloth-outline-color);
+}
+
+.robe .collar.sm {
+  width: 34%;
+  height: 26%;
+  top: 0%;
+  left: 14%;
+  border-radius: 95% 5% 70% 0% / 52% 10% 33% 46%;
+  transform: rotate(7deg);
+  box-shadow: calc(0.6 * var(--unit)) calc(0.6 * var(--unit)) 0
+    calc(0.6 * var(--unit)) var(--cloth-outline-color);
+}
+
+.robe .front {
+  width: 83%;
+  height: 94%;
+  top: 3%;
+  left: 8%;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  background-color: var(--cloth-color);
+  z-index: 100;
+}
+
+.robe .sleeve {
+  background-color: var(--cloth-color);
+  width: 15%;
+  height: 30%;
+}
+
+.robe .sleeve::after {
+  content: "";
+  background: var(--cloth-outline-color);
+  display: block;
+  height: 100%;
+  width: 33%;
+}
+
+.robe .sleeve.left {
+  top: 21%;
+  left: 7%;
+  border-radius: 70% 0 0 0 / 100% 0 0 0;
+  transform: rotate(27deg);
+}
+
+.robe .sleeve.left::after {
+  right: 0;
+}
+
+.robe .sleeve.right {
+  top: 21%;
+  right: 8%;
+  border-radius: 0 70% 0 0 / 0 100% 0 0;
+  transform: rotate(-27deg);
+}
+
+.robe .sleeve.right::after {
+  left: 0;
+}
+
+.robe .placket {
+  height: 95%;
+  width: 2%;
+  top: 2%;
+  background-color: var(--cloth-outline-color);
+  left: 50%;
+  border-radius: 35%;
+  z-index: 100;
+}
+
+.baby-yoda-body .hand {
+  width: 12%;
+  height: 23%;
+  top: 45%;
+  border-radius: 77% 23% 58% 42% / 42% 32% 68% 58%;
+  background: radial-gradient(
+    ellipse at 69% bottom,
+    transparent 28%,
+    var(--skin-color) 25%
+  );
+}
+
+.baby-yoda-body .hand.left {
+  left: 4%;
+}
+
+.baby-yoda-body .hand.right {
+  right: 5%;
+  transform: scaleX(-1);
+}
+
+a {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  width: 34px;
+  width: min(34px, calc(11 * var(--unit)));
+}
+
+a:hover > svg {
+  fill: #838383;
+}
+
+h1 {
+  font-size: calc(6 * var(--unit));
+  margin: 0;
+}
+
+hex-color-picker {
+  width: calc(13 * var(--unit));
+  height: calc(13 * var(--unit));
+  padding-top: calc(1 * var(--unit));
+}
+
+hex-color-picker::part(hue) {
+  flex-basis: calc(2 * var(--unit));
+}
+
+hex-color-picker::part(saturation-pointer) {
+  width: calc(2 * var(--unit));
+  height: calc(2 * var(--unit));
+}
+
+hex-color-picker::part(hue-pointer) {
+  width: calc(2 * var(--unit));
+  height: calc(2 * var(--unit));
+}
